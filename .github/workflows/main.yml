@@ -44,7 +44,7 @@ jobs:
 
     - name: run bandit scan
       # scan files for SAST
-      run: bandit -r .
+      run: bandit -ll -ii -r .
 
 
 
