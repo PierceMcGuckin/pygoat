@@ -44,7 +44,15 @@ jobs:
 
     - name: run bandit scan
       # scan files for SAST
-      run: bandit -ll -ii -r .
+      run: bandit -ll -ii -r . -f json -o bandit-report.json
+
+    - name: upload artifacvt
+      uses: action/upload-artifact@v3
+      # always execute below 
+      if: always()
+      with:
+        name: bandit-findings
+        path: bandit-report.json
 
 
 
