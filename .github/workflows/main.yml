@@ -1,0 +1,53 @@
+name: CI
+
+# on = this event
+# whenever theeres a push
+on: [push]
+
+# stuff that will happen
+jobs:
+  # we will do SAST testing
+  # bandit is a SAST pythin tool
+  
+  # define a job
+  sast_scan:
+
+    name: Run Bandit Scan
+    
+    # specify platform to run on
+    runs-on: ubuntu-latest
+
+    # stuff that will happen
+    steps:
+
+
+    # name of something that will happen
+    - name: checkout code
+    # action for this name
+      uses: actions/checkout@v2
+
+
+    
+    # name of something that will happen
+    - name: setup python
+    # action for this name
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+
+    # name of something that will happen
+    - name: install bandit
+
+      # run - runs command on ubuntu machine
+      run: pip install bandit
+
+    - name: run bandit scan
+      # scan files for SAST
+      run: bandit -r .
+
+
+
+  
+      
+      
